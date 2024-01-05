@@ -38,5 +38,14 @@ public class ProductResource {
 		return ResponseEntity.status(HttpStatus.OK).body(repository.findAll());
 	}
 	
+	@GetMapping("/products/{id}")
+	public ResponseEntity<Object> getOneProduct(@PathVariable(value="id")UUID id){
+		Optional<Product> product = repository.findById(id);
+		if(product.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product not found");
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(product.get());
+	}
+	
 	
 }
