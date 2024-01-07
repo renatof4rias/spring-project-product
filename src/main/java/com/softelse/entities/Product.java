@@ -20,6 +20,7 @@ public class Product implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID id;
 	private String name;
+	
 	@Column(name = "Value_Product")
 	private BigDecimal value;
 
